@@ -2,7 +2,6 @@
 
 Este projeto é uma aplicação front-end desenvolvida em React para realizar operações básicas de listagem, cadastro e edição de contatos, os quais podem ter múltiplos números de telefone associados.
 
-
 ## Pré-requisitos
 
 Certifique-se de ter as seguintes dependências instaladas antes de iniciar:
@@ -45,10 +44,10 @@ npm run build
 Os arquivos resultantes estarão na pasta build/.
 
 ## Funcionalidades
+
 1. Listagem de contatos
 2. Cadastro de novos contatos
 3. Edição de contatos existentes
-4. Associação de múltiplos números de telefone a um contato
 
 ## Contribuição
 
@@ -65,5 +64,3 @@ Este projeto é licenciado sob a Licença MIT - consulte o arquivo LICENSE.md pa
 ## Contato
 
 Para qualquer dúvida ou problema, entre em contato com `m4rt1ns.jose@gmail.com`.
-
-
