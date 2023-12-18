@@ -7,17 +7,12 @@ import Button from "../Button";
 import { handleInputObjectChange } from "../../utils/formUtils";
 import style from "./Filters.module.css";
 
-const defaultFilters = {
-    name: "",
-    age: "",
-};
-
 const Filters = ({ onFilter }) => {
     const navigate = useNavigate();
-    const [filters, setFilters] = useState(defaultFilters);
+    const [filters, setFilters] = useState({});
 
     const cleanFilters = () => {
-        setFilters(defaultFilters);
+        setFilters({});
         onFilter();
     };
 

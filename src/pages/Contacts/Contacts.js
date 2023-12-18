@@ -9,7 +9,7 @@ import { find, remove } from "./Contact.service";
 import style from "./Contacts.module.css";
 
 const Contacts = () => {
-    const [contacts, setContacts] = useState();
+    const [contacts, setContacts] = useState([]);
 
     const removeContact = async (id) => {
         if (!id) return;
@@ -39,6 +39,7 @@ const Contacts = () => {
         <Page>
             <Filters onFilter={loadContact} />
             <List>
+                {!contacts.length && <p>Nenhum contato existente</p>}
                 {contacts?.map((contact) => (
                     <Item key={contact.id}>
                         <div>Nome: {contact.name}</div>

@@ -47,7 +47,7 @@ const Contact = () => {
         try {
             await save({ id, ...contact, phones });
             alert("Sucesso");
-            navigate("/contacts");
+            navigate("/");
         } catch (error) {
             console.log(error);
             alert("error");
