@@ -6,6 +6,7 @@ import Filters from "../../components/Filters/Filters";
 import List from "../../components/List";
 import Item from "../../components/List/Item";
 import Label from "../../components/Label";
+import Empty from "../../components/Empty/Empty";
 import Button from "../../components/Button";
 import { find, remove } from "./Contact.service";
 import style from "./Contacts.module.css";
@@ -42,7 +43,7 @@ const Contacts = () => {
             <Title>Contatos</Title>
             <Filters onFilter={loadContact} />
             <List>
-                {!contacts.length && <p>Nenhum contato existente</p>}
+                {!contacts.length && <Empty>Nenhum contato existente</Empty>}
                 {contacts?.map((contact) => (
                     <Item key={contact.id}>
                         <Label>Nome: {contact.name}</Label>
