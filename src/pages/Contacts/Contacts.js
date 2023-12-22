@@ -48,11 +48,9 @@ const Contacts = () => {
                     <Item key={contact.id}>
                         <Label>Nome: {contact.name}</Label>
                         <div className={style.menuItem}>
-                            <Button>
-                                <Link to={`/contact/${contact.id}`}>
-                                    Editar
-                                </Link>
-                            </Button>
+                            <Link to={`/contact/${contact.id}`}>
+                                <Button>Editar</Button>
+                            </Link>
                             <Button
                                 theme="delete"
                                 onClick={() => removeContact(contact.id)}
