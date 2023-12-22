@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Page from "../../components/Page";
+import Title from "../../components/Title";
 import Filters from "../../components/Filters/Filters";
 import List from "../../components/List";
 import Item from "../../components/List/Item";
+import Label from "../../components/Label";
 import Button from "../../components/Button";
 import { find, remove } from "./Contact.service";
 import style from "./Contacts.module.css";
@@ -37,19 +39,23 @@ const Contacts = () => {
 
     return (
         <Page>
+            <Title>Contatos</Title>
             <Filters onFilter={loadContact} />
             <List>
                 {!contacts.length && <p>Nenhum contato existente</p>}
                 {contacts?.map((contact) => (
                     <Item key={contact.id}>
-                        <div>Nome: {contact.name}</div>
+                        <Label>Nome: {contact.name}</Label>
                         <div className={style.menuItem}>
                             <Button>
                                 <Link to={`/contact/${contact.id}`}>
                                     Editar
                                 </Link>
                             </Button>
-                            <Button onClick={() => removeContact(contact.id)}>
+                            <Button
+                                theme="delete"
+                                onClick={() => removeContact(contact.id)}
+                            >
                                 Excluir
                             </Button>
                         </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Page from "../../../components/Page/Page";
+import Title from "../../../components/Title";
 import Field from "../../../components/Field";
 import Label from "../../../components/Label/Label";
 import Input from "../../../components/Input";
@@ -72,7 +73,7 @@ const Contact = () => {
     return (
         <Page>
             <form className={style.form}>
-                <h2>Contato</h2>
+                <Title>Contato</Title>
                 <Field flexDirection="column">
                     <Label>Nome:</Label>
                     <Input
@@ -121,6 +122,7 @@ const Contact = () => {
                                 }
                             />
                             <Button
+                                theme="delete"
                                 onClick={() =>
                                     onRemovePhone({ id: index, ...phone })
                                 }
