@@ -50,7 +50,6 @@ const Contact = () => {
             alert("Sucesso");
             navigate("/");
         } catch (error) {
-            console.log(error);
             alert("error");
         }
     };
@@ -61,7 +60,7 @@ const Contact = () => {
             setContact(rest);
             setPhones(phones);
         } catch (error) {
-            console.log(error);
+            alert("error");
         }
     };
 

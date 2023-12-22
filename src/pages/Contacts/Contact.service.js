@@ -2,12 +2,9 @@ import http from "../../services/htttp";
 
 export const find = async (filters = {}) => {
     try {
-        console.log(filters);
         const filterList = Object.entries(filters);
 
         let url = "/contacts/";
-
-        console.log(filterList);
 
         filterList?.forEach((filter, index) => {
             const [key, value] = filter;

@@ -21,7 +21,7 @@ const Contacts = () => {
             await remove(id);
             await loadContact();
         } catch (error) {
-            console.log(error);
+            alert("error");
         }
     };
 
@@ -30,7 +30,7 @@ const Contacts = () => {
             const response = await find(filters);
             setContacts(response);
         } catch (error) {
-            console.log(error);
+            alert("error");
         }
     };
 
@@ -46,7 +46,7 @@ const Contacts = () => {
                 {!contacts.length && <Empty>Nenhum contato existente</Empty>}
                 {contacts?.map((contact) => (
                     <Item key={contact.id}>
-                        <Label>Nome: {contact.name}</Label>
+                        <Label>{contact.name}</Label>
                         <div className={style.menuItem}>
                             <Link to={`/contact/${contact.id}`}>
                                 <Button>Editar</Button>
