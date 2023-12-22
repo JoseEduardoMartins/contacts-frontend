@@ -11,12 +11,7 @@ import {
     handleInputObjectListChange,
 } from "../../../utils/formUtils";
 import { phoneMask } from "../../../utils/number.utils";
-import {
-    findById,
-    save,
-    defaultContact,
-    defaultPhones,
-} from "../Contact.service";
+import { findById, save, defaultContact } from "../Contact.service";
 import style from "./Contact.module.css";
 
 const Contact = () => {
@@ -25,7 +20,7 @@ const Contact = () => {
 
     const [contact, setContact] = useState(defaultContact);
     const [phones, setPhones] = useState([]);
-    const [phone, setPhone] = useState(defaultPhones);
+    const [phone, setPhone] = useState({});
 
     const onSavePhone = () => {
         if (!phone || phone.length) return alert("Numero de telefone invalido");
@@ -33,13 +28,13 @@ const Contact = () => {
         const data = [...phones, phone];
 
         setPhones(data);
-        setPhone(defaultPhones);
+        setPhone({});
     };
 
     const onRemovePhone = (phone) => {
         if (!phone) return;
 
-        const data = phones.filter((obj) => obj.id !== phone.id);
+        const data = phones.filter((obj) => obj.number !== phone.number);
 
         setPhones(data);
     };
@@ -68,6 +63,8 @@ const Contact = () => {
         if (!!id) loadContact();
         // eslint-disable-next-line
     }, [id]);
+
+    console.log(phones);
 
     return (
         <Page>
@@ -122,9 +119,7 @@ const Contact = () => {
                             />
                             <Button
                                 theme="delete"
-                                onClick={() =>
-                                    onRemovePhone({ id: index, ...phone })
-                                }
+                                onClick={() => onRemovePhone(phone)}
                             >
                                 Deletar
                             </Button>
