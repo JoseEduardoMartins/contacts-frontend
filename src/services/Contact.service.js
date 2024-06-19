@@ -1,4 +1,4 @@
-import http from "./http";
+import http from "../config/http";
 
 export const defaultPhone = {
     id: undefined,
