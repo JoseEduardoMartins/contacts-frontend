@@ -1,45 +1,37 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Field from "../Field";
-import Label from "../Label";
-import Input from "../Input";
 import Button from "../Button";
-import { handleInputObjectChange } from "../../utils/formUtils";
+import Input from "../Input";
 import style from "./Filters.module.css";
+import { useFilters } from "./useFilters";
 
 const Filters = ({ onFilter }) => {
-    const navigate = useNavigate();
-    const [filters, setFilters] = useState({});
-
-    const cleanFilters = () => {
-        setFilters({});
-        onFilter();
-    };
+    const {
+        filters,
+        setFilters,
+        cleanFilters,
+        handleOnSubmit,
+        handleOnRegiste,
+    } = useFilters({ onFilter });
 
     return (
-        <div className={style.filters}>
-            <Field>
-                <Label>Nome:</Label>
-                <Input
-                    value={filters.name}
-                    onChange={(e) =>
-                        handleInputObjectChange(e, "name", filters, setFilters)
-                    }
-                />
-            </Field>
-            <Field>
-                <Label>Idade:</Label>
-                <Input
-                    value={filters.age}
-                    onChange={(e) =>
-                        handleInputObjectChange(e, "age", filters, setFilters)
-                    }
-                />
-            </Field>
+        <form className={style.filters} onSubmit={handleOnSubmit}>
+            <Input
+                name="name"
+                type="text"
+                placeholder="Digine um nome..."
+                form={filters}
+                setForm={setFilters}
+            />
+            <Input
+                name="age"
+                type="number"
+                placeholder="Digine uma idade..."
+                form={filters}
+                setForm={setFilters}
+            />
             <Button onClick={() => cleanFilters()}>Limpar</Button>
-            <Button onClick={() => onFilter(filters)}>Buscar</Button>
-            <Button onClick={() => navigate("/contact")}>Cadastrar</Button>
-        </div>
+            <Button type="submit">Buscar</Button>
+            <Button onClick={() => handleOnRegiste()}>Cadastrar</Button>
+        </form>
     );
 };
 

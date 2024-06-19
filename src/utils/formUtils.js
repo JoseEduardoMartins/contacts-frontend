@@ -1,22 +1,17 @@
-export const handleInputObjectChange = (event, field, form, setForm) => {
-    const value = event.target.value;
+export const handleInputObjectChange = (event, form, setForm) => {
+    const { name, value } = event.target;
 
     const data = { ...form };
-    data[field] = value;
+    data[name] = value;
 
     setForm(data);
 };
 
-export const handleInputObjectListChange = (
-    evt,
-    index,
-    field,
-    form,
-    setForm
-) => {
-    const value = evt.target.value;
-    const data = [...form];
+export const handleInputObjectListChange = (evt, index, form, setForm) => {
+    const { name, value } = evt.target;
 
-    data[index][field] = value;
+    const data = [...form];
+    data[index][name] = value;
+
     setForm(data);
 };

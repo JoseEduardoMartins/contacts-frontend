@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Contacts from "./pages/Contacts";
-import Contact from "./pages/Contacts/Contact";
+import Contact from "./pages/Contact";
 
 const App = () => (
     <BrowserRouter>

@@ -19,7 +19,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-    type: PropTypes.oneOf(["button"]),
+    type: PropTypes.oneOf(["button", "submit"]),
     theme: PropTypes.oneOf(["success", "delete"]),
     onClick: PropTypes.func,
     children: PropTypes.node.isRequired,

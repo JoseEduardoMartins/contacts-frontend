@@ -1,4 +1,20 @@
-import http from "../../services/htttp";
+import http from "./http";
+
+export const defaultPhone = {
+    id: undefined,
+    number: "",
+};
+
+export const defaultContactFilters = {
+    name: "",
+    age: "",
+};
+
+export const defaultContact = {
+    id: undefined,
+    name: "",
+    age: 0,
+};
 
 export const find = async (filters = {}) => {
     try {
@@ -8,6 +24,10 @@ export const find = async (filters = {}) => {
 
         filterList?.forEach((filter, index) => {
             const [key, value] = filter;
+
+            if (value === undefined || value === null) return;
+            if (typeof value === "string" && !value.length) return;
+
             url += !index ? `?${key}=${value}` : `&${key}=${value}`;
         });
 
@@ -49,15 +69,4 @@ export const remove = async (id) => {
     } catch (error) {
         throw error;
     }
-};
-
-export const defaultPhones = {
-    id: undefined,
-    number: "",
-};
-
-export const defaultContact = {
-    id: undefined,
-    name: "",
-    age: undefined,
 };

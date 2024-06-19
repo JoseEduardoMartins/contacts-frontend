@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Page from "../../components/Page";
 import Title from "../../components/Title";
@@ -8,35 +7,11 @@ import Item from "../../components/List/Item";
 import Label from "../../components/Label";
 import Empty from "../../components/Empty/Empty";
 import Button from "../../components/Button";
-import { find, remove } from "./Contact.service";
 import style from "./Contacts.module.css";
+import { useContacts } from "./useContacts";
 
 const Contacts = () => {
-    const [contacts, setContacts] = useState([]);
-
-    const removeContact = async (id) => {
-        if (!id) return;
-
-        try {
-            await remove(id);
-            await loadContact();
-        } catch (error) {
-            alert("error");
-        }
-    };
-
-    const loadContact = async (filters = {}) => {
-        try {
-            const response = await find(filters);
-            setContacts(response);
-        } catch (error) {
-            alert("error");
-        }
-    };
-
-    useEffect(() => {
-        loadContact();
-    }, []);
+    const { contacts, loadContact, removeContact } = useContacts();
 
     return (
         <Page>
