@@ -1,55 +1,35 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Page from "../../components/Page";
+import Title from "../../components/Title";
 import Filters from "../../components/Filters/Filters";
 import List from "../../components/List";
 import Item from "../../components/List/Item";
+import Label from "../../components/Label";
+import Empty from "../../components/Empty/Empty";
 import Button from "../../components/Button";
-import { find, remove } from "./Contact.service";
 import style from "./Contacts.module.css";
+import { useContacts } from "./useContacts";
 
 const Contacts = () => {
-    const [contacts, setContacts] = useState([]);
-
-    const removeContact = async (id) => {
-        if (!id) return;
-
-        try {
-            await remove(id);
-            await loadContact();
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const loadContact = async (filters = {}) => {
-        try {
-            const response = await find(filters);
-            setContacts(response);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    useEffect(() => {
-        loadContact();
-    }, []);
+    const { contacts, loadContact, removeContact } = useContacts();
 
     return (
         <Page>
+            <Title>Contatos</Title>
             <Filters onFilter={loadContact} />
             <List>
-                {!contacts.length && <p>Nenhum contato existente</p>}
+                {!contacts.length && <Empty>Nenhum contato existente</Empty>}
                 {contacts?.map((contact) => (
                     <Item key={contact.id}>
-                        <div>Nome: {contact.name}</div>
+                        <Label>{contact.name}</Label>
                         <div className={style.menuItem}>
-                            <Button>
-                                <Link to={`/contact/${contact.id}`}>
-                                    Editar
-                                </Link>
-                            </Button>
-                            <Button onClick={() => removeContact(contact.id)}>
+                            <Link to={`/contact/${contact.id}`}>
+                                <Button>Editar</Button>
+                            </Link>
+                            <Button
+                                theme="delete"
+                                onClick={() => removeContact(contact.id)}
+                            >
                                 Excluir
                             </Button>
                         </div>

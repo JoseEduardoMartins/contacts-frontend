@@ -1,7 +1,7 @@
 .item {
     width: 100%;
     padding: 10px;
-    border: 1px solid #4f4f4f;
+    border-bottom: 1px solid #4f4f4f;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
