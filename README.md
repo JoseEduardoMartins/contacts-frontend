@@ -6,18 +6,25 @@ Este projeto é uma aplicação front-end desenvolvida em React para realizar op
 
 Certifique-se de ter as seguintes dependências instaladas antes de iniciar:
 
+Opção 1
+
 -   [Node.js](https://nodejs.org/) (versão 16.17.0 ou superior)
 -   Pacotes [npm](https://www.npmjs.com/) (Node Package Manager)
+
+Opção 2
+
+-   [Docker](https://docs.docker.com/get-docker/)
+-   [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Instruções de Configuração
 
 ### 1. Clone o repositório
 
-    ```bash
-    git clone https://github.com/JoseEduardoMartins/contacts-frontend.git
+```bash
+git clone https://github.com/JoseEduardoMartins/contacts-frontend.git
 
-    cd contacts-frontend
-    ```
+cd contacts-frontend
+```
 
 ### 2. Configurar ambiente.
 
@@ -29,7 +36,11 @@ Certifique-se de ter as seguintes dependências instaladas antes de iniciar:
     npm install
     ```
 
--   Configure as variáveis de ambiente. Renomeie o arquivo `.env.example` para `.env` e preencha as informações necessárias.
+-   Criar um arquivo `.env` na raiz do projeto com base no `.env.example` e mude as variaveis se necessario.
+
+    ```bash
+    REACT_APP_API_URL=http://localhost:3000/api
+    ```
 
 #### Opção 2: Utilizando Docker
 
