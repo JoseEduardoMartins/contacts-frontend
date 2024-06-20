@@ -33,7 +33,7 @@ Certifique-se de ter as seguintes dependências instaladas antes de iniciar:
 
 #### Opção 2: Utilizando Docker
 
--   Certifique-se de configurar corretamente as variáveis de ambiente no arquivo `docker-compose.yml` para conectar ao banco de dados.
+-   Certifique-se de configurar corretamente as variáveis de ambiente no arquivo `docker-compose.yml` para conectar ao back-end.
 
 ### 4. Executar a Aplicação
 
