@@ -1,29 +1,30 @@
-# Use a imagem base do Node
+# Usar a imagem base do Node
 FROM node:14
 
-# Defina o diretório de trabalho dentro do contêiner
+# Definir o diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copie os arquivos package.json e package-lock.json para o diretório de trabalho
+# Copiar package.json e package-lock.json
 COPY package*.json ./
 
-# Instale as dependências do projeto
+# Instalar dependências
 RUN npm install
 
-# Copie todo o código do projeto para o diretório de trabalho
+# Copiar todo o código da aplicação
 COPY . .
 
-# Compilar o aplicativo React para produção
+# Aceitar ARG para REACT_APP_API_URL
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+
+# Construir a aplicação para produção
 RUN npm run build
 
-# Use uma imagem de servidor web para servir o aplicativo (por exemplo, nginx)
-FROM nginx:alpine
+# Instalar um servidor simples para servir o conteúdo
+RUN npm install -g serve
 
-# Copie os arquivos compilados do build anterior para o diretório de distribuição do nginx
-COPY --from=0 /app/build /usr/share/nginx/html
+# Definir a porta que a aplicação vai rodar
+EXPOSE 3001
 
-# Exponha a porta 80 para acessar o aplicativo
-EXPOSE 80
-
-# Comando para iniciar o nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Comando para rodar a aplicação
+CMD ["serve", "-s", "build", "-l", "3001"]

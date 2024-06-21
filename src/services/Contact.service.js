@@ -13,7 +13,7 @@ export const defaultContactFilters = {
 export const defaultContact = {
     id: undefined,
     name: "",
-    age: 0,
+    age: "",
 };
 
 export const find = async (filters = {}) => {
@@ -59,6 +59,12 @@ export const save = async (contact) => {
 
         return { id: data.id };
     } catch (error) {
+        const { status, data } = error.response;
+
+        if (status === 400) {
+            throw data.errors;
+        }
+
         throw error;
     }
 };

@@ -38,8 +38,8 @@ export const useContact = () => {
             await save({ id, ...contact, phones });
             alert("Sucesso");
             navigate("/");
-        } catch (error) {
-            alert("error");
+        } catch (errors) {
+            alert(errors[0].msg);
         }
     };
 
